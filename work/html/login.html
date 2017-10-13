@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/public.css" />
+		<link rel="stylesheet" href="../css/register.css" />
+		<link rel="stylesheet" href="../css/login.css" />
+		<script type = "text/javascript" src="../js/jquery-1.11.3.js"></script>
+		<script type = "text/javascript" src="../js/jquery.cookie.js"></script>
+		<script>
+			window.onload = function(){
+				var oBtn = document.getElementById("loginbtn");
+				
+				oBtn.onclick = function(){
+					
+				}
+				
+				var login = (function(){
+					var dataLogin = function(){
+						var aInputs = document.getElementsByTagName("input");
+						var data = `input0=${aInputs[0].value}&input1=${aInputs[1].value}`;
+
+						data += "&status=login";
+						
+						$_ajax({
+							method: "post",
+							url: "http://datainfo.duapp.com/shopdata/userinfo.php",
+							data: data,
+							success: function(data){
+								if(data == 0){
+									alert("用户名不存在")
+								}else if(data == 2){
+									alert("用户名与密码不符");
+								}else{
+									//成功
+									alert(data);
+								}
+							}
+						})
+					}
+				})
+			}
+		</script>
+	</head>
+	<body style = "background: #f6f6f6;">
+		<div class = "reg_box">
+			<div class = "reg_header">
+				<div class = "reg_logo">
+					<div class = "reg_a"><a href="../index.html"></a></div>
+				</div>
+				<div class = "reg_right">
+					<a href="#" class = "ten"></a>
+					<a href="#" class = "buyer"></a>
+					<a href="#" class = "check"></a>
+				</div>
+			</div>
+		</div>
+		<div class = "main">
+			<div class = "main_title">
+				<p class = "title_left"><span>老用户登录</span>尊敬的卷皮用户，欢迎您回来！</p>
+				<p class = "title_right">还没账号？<a href="register.html">立即去注册</a></p>
+			</div>
+			<div class = "log_centet">
+				<div class = "log_left">
+					<div class = "border_box">
+						<div class = "user_img"></div>
+						<input type="text" placeholder="手机号/邮箱/昵称" />
+					</div>
+					<div class = "border_box">
+						<div class = "code_img"></div>
+						<input type="password" placeholder="密码" />
+					</div>
+					<div class = "log_imfor">
+						<p><input type="checkbox" checked="checked" />两周内免登录</p>
+						<a href="#">忘记密码？</a>
+					</div>
+					<p><input id = "loginbtn" type="submit" value = "登录" /></p>
+					<div class = "team_login">
+						<div class = "team_left">
+							<p>合作网站账号登录</p>
+							<div class = "login_a">
+								<a href="#" class = "qq"></a>
+								<a href="#" class = "weixin"></a>
+								<a href="#" class = "weibo"></a>
+								<a href="#" class = "taobao"></a>
+							</div>
+						</div>
+						<div class= "team_right">
+							<a href="#">手机快速登录>></a>
+						</div>
+					</div>
+				</div>
+				<div class= "log_right"></div>
+			</div>
+		</div>
+		<p class= "reg_company">武汉奇米网络科技有限公司 鄂ICP备10209250号 | ICP许可证号：鄂B1-20150109 | <a href="#" class = "copy">鄂公网安备42018502000390号</a> | 食品流通许可证 SP4201991510041888</p>
+		<p class = "reg_copright">Copyright © 2010 - 2017 JuanPi.com All Rights Reserved</p>
+	</body>
+</html>

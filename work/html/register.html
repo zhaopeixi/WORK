@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link type = "text/css" rel = "stylesheet" href = "../css/public.css" />
+		<link type = "text/css" rel = "stylesheet" href = "../css/register.css" />
+		<script type = "text/javascript" src="../js/jquery-1.11.3.js"></script>
+		<script type = "text/javascript" src="../js/jquery.cookie.js"></script>
+		<script>
+			window.onload = function(){
+				var aInputs = document.getElementsByTagName("input");
+				var aP1s = aInputs[0].parentNode.getElementsByTagName("p");
+				var aP2s = aInputs[1].parentNode.getElementsByTagName("p");
+				var aP3s = aInputs[2].parentNode.getElementsByTagName("p");
+				var oBtn = document.getElementById("registerbtn");
+				
+				var isYes1 = false;
+				var isYes2 = false;
+				var isYes3 = false;
+				
+				aInputs[0].onblur = function(){
+					telCheckbb();
+				}
+				
+				aInputs[1].onblur = function(){
+					passwordCheckbb();
+				}
+				
+				aInputs[2].onblur = function(){
+					passwordAgainbb();
+				}
+				
+				oBtn.onclick = function(){
+					if(isYes1 && isYes2 && isYes3){
+						register();
+					}
+				}
+				
+				var telCheckbb = (function(node1, node2, node3){
+					
+					var telCheck = function(){
+						var value = node1.value;
+						node2.style.display = "block";
+						if(!(/^1[3,4,5,7,8]\d{9}$/.test(value))){
+							node3.style.color = "#ff464e";
+							node3.innerHTML = "请输入正确的手机号";
+							node2.style.backgroundPosition = "left -19px";
+						}else{
+							node2.style.display = "block";
+							node2.style.backgroundPosition = "-40px -19px";
+							isYes1 = true;
+						}
+					}
+					return telCheck;
+				})(aInputs[0], aP1s[0], aP1s[1]);
+				
+				
+				var passwordCheckbb = (function(node1, node2, node3){
+					var passwordCheck = function(){
+						var value = node1.value;
+						node2.style.display = "block";
+						if(!(/^[0-9a-zA-Z_#]{6,16}$/.test(value))){
+							node3.style.color = "#ff464e";
+							node3.innerHTML = "密码格式不符合规范";
+							node2.style.backgroundPosition = "left -19px";
+						}else{
+							node2.style.display = "block";
+							node2.style.backgroundPosition = "-40px -19px";
+							node3.style.display = "none";
+							isYes2 = true;
+						}
+					}
+					return passwordCheck;
+				})(aInputs[1], aP2s[0], aP2s[1]);
+				
+				
+				var passwordAgainbb = (function(node1, node2, node3){
+					var value = node1.value;
+					var oPassword = document.getElementById("password");
+					
+					var passwordAgain = function(){
+						var value = node1.value;
+						node2.style.display = "block";
+						if(value != oPassword.value){
+							node3.style.color = "#ff464e";
+							node3.innerHTML = "密码不一致";
+							node2.style.backgroundPosition = "left -19px";
+						}else{
+							node2.style.display = "block";
+							node2.style.backgroundPosition = "-40px -19px";
+							node3.style.display = "none";
+							isYes3 = true;
+						}
+					}
+					return passwordAgain;
+				})(aInputs[2], aP3s[0], aP3s[1]);
+				
+				
+				var register = (function(){
+					var loginData = function(){
+						var aInputs = document.getElementsByTagName("input");
+						var data = `input0=${aInputs[0].value}&input1=${aInputs[1].value}`;
+
+						data += "&status=register";
+						
+						$_ajax({
+							method: "post",
+							url: "http://datainfo.duapp.com/shopdata/userinfo.php",
+							data: data,
+							success: function(data){
+								if(data == 0){
+									alert("用户名重名")
+								}else if(data == 2){
+									alert("数据库报错");
+								}else{
+									//成功
+									alert("注册成功");
+								}
+							}
+						})
+					}
+					return loginData;
+				})
+			}
+			
+			/*
+					<li>手机号码：<input type = "text" id = "inp_select" autofocus = "autofocus" />
+						<p class = "error_img" id = "error_imgtel"></p>
+						<p class = "error_text" id = "error_texttel">请输入11位手机号</p>
+						<span class = "emailreg">或 <a href="#">邮箱注册</a></span>
+					</li>
+					<li>创建密码：<input id = "password" type = "password" />
+						<p class = "error_img" id = "error_imgpass1"></p>
+						<p class = "error_text id = "error_textpass1">6-16个数字、字母或符号，字母区分大小写</p>
+					</li>
+					<li>确认密码：<input type = "password" />
+						<p class = "error_img" id = "error_imgpass2"></p>
+						<p class = "error_text id = "error_textpass2">请再次输入密码</p>
+					</li> 
+			*/
+		</script>
+	</head>
+	<body style = "background: #f6f6f6;">
+		<div class = "reg_box">
+			<div class = "reg_header">
+				<div class = "reg_logo">
+					<div class = "reg_a"><a href="../index.html"></a></div>
+				</div>
+				<div class = "reg_right">
+					<a href="#" class = "ten"></a>
+					<a href="#" class = "buyer"></a>
+					<a href="#" class = "check"></a>
+				</div>
+			</div>
+		</div>
+		<div class = "main">
+			<div class = "main_title">
+				<p class = "title_left"><span>新用户注册</span>注册卷皮网，赢积分换好礼！</p>
+				<p class = "title_right">已有账号，<a href="login.html">立即登录</a></p>
+			</div>
+			<div class = "main_center">
+				<div class = "cen_left">
+					<li>手机号码：<input type = "text" id = "inp_select" autofocus = "autofocus" />
+						<p class = "error_img" id = "error_imgtel"></p>
+						<p class = "error_text" id = "error_texttel">请输入11位手机号</p>
+						<span class = "emailreg">或 <a href="#">邮箱注册</a></span>
+					</li>
+					<li>创建密码：<input id = "password" type = "password" />
+						<p class = "error_img" id = "error_imgpass1"></p>
+						<p class = "error_text id = "error_textpass1">6-16个数字、字母或符号，字母区分大小写</p>
+					</li>
+					<li>确认密码：<input type = "password" />
+						<p class = "error_img" id = "error_imgpass2"></p>
+						<p class = "error_text id = "error_textpass2">请再次输入密码</p>
+					</li>
+					<li><input id = "registerbtn" type="button" value = "立即注册" /></li>
+					<li id = "protocol"><input type="checkbox" checked="checked" />我已阅读并接受 <a href="#">《卷皮用户协议》</a></li>
+				</div>
+				<div class = "cen_right">
+					<div class = "right_img"></div>
+					<div class= "right_line"></div>
+					<div class = "right_login">
+						<p>无需注册，快速登录</p>
+						<div class = "login_a">
+							<a href="#" class = "qq"></a>
+							<a href="#" class = "weixin"></a>
+							<a href="#" class = "weibo"></a>
+							<a href="#" class = "taobao"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p class= "reg_company">武汉奇米网络科技有限公司 鄂ICP备10209250号 | ICP许可证号：鄂B1-20150109 | <a href="#" class = "copy">鄂公网安备42018502000390号</a> | 食品流通许可证 SP4201991510041888</p>
+		<p class = "reg_copright">Copyright © 2010 - 2017 JuanPi.com All Rights Reserved</p>
+	</body>
+</html>

@@ -1,0 +1,428 @@
+.banner{
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.banner .banner_left{
+	width: 210px;
+	float: left;
+	padding: 0 10px;
+	background: #fff;
+}
+.banner .banner_left ul li{
+	float: left;
+	width: 95px;
+	height: 54px;
+	text-align: center;
+	line-height: 54px;
+	font-size: 14px;
+	border-bottom: 1px dotted #C6C6C6;
+}
+.banner .banner_left ul li:last-of-type, .banner .banner_left ul li:nth-of-type(13){
+	border-bottom: 0;
+}
+.banner .banner_left ul li a{
+	color: #5e5e5e;
+	float: left;
+	width: 95px;
+	float: left;
+	overflow: hidden;
+}
+.banner .banner_left ul li a i{
+	font-style: normal;
+	margin-left: 5px;
+	float: left;
+}
+.banner .banner_left ul li a em{
+	width: 1px;
+	height: 15px;
+	background: #eee;
+	float: right;
+	margin-top: 19px;
+}
+.banner .banner_left ul li a span{
+	float: left;
+	margin: 15px 0 0 10px;
+	width: 24px;
+	height: 24px;
+	background: url(../images/index/bannerl_icon.png);
+}
+.banner .banner_left ul li:nth-of-type(2) a span{
+	background-position: -24px top;
+}
+.banner .banner_left ul li:nth-of-type(3) a span{
+	background-position: -48px top;
+}
+.banner .banner_left ul li:nth-of-type(4) a span{
+	background-position: -72px top;
+}
+.banner .banner_left ul li:nth-of-type(5) a span{
+	background-position: -96px top;
+}
+.banner .banner_left ul li:nth-of-type(6) a span{
+	background-position: -120px top;
+}
+.banner .banner_left ul li:nth-of-type(7) a span{
+	background-position: -144px top;
+}
+.banner .banner_left ul li:nth-of-type(8) a span{
+	background-position: -168px top;
+}
+.banner .banner_left ul li:nth-of-type(9) a span{
+	background-position: -192px top;
+}
+.banner .banner_left ul li:nth-of-type(10) a span{
+	background-position: -216px top;
+}
+.banner .banner_left ul li:nth-of-type(11) a span{
+	background-position: -240px top;
+}
+.banner .banner_left ul li:nth-of-type(12) a span{
+	background-position: -264px top;
+}
+.banner .banner_left ul li:nth-of-type(13) a span{
+	background-position: -288px top;
+}
+.banner .banner_left ul li:nth-of-type(14) a span{
+	background-position: -312px top;
+}
+.banner .banner_center{
+	width: 700px;
+	height: 360px;
+	float: left;
+	margin: 20px 20px 0 20px;
+	position: relative;
+	overflow: hidden;
+}
+.banner .banner_center .disc{
+	position: absolute;
+	z-index: 10;
+	bottom: 10px;
+	left: 320px;
+}
+.banner .banner_center .disc li{
+	float: left;
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	border-radius: 50%;
+	margin: 0 5px;
+}
+.banner .banner_center .disc .li_active{
+	width: 15px;
+	height: 15px;
+	background: #f5f5f5;
+	margin-top: -3px;
+}
+.banner .banner_img{
+	overflow: hidden;
+	position: absolute;
+}
+.banner .banner_img li{
+	float: left;
+}
+.banner .banner_img li a{
+	float: left;
+}
+.banner .banner_right{
+	width: 250px;
+	float: right;
+	overflow: hidden;
+	margin-top: 20px;
+}
+.banner .banner_right div{
+	float: left;
+}
+.banner .banner_right div a{
+	float: left;
+	width: 124px;
+	height: 119px;
+}
+.banner .banner_right .goods_big a{
+	width: 250px;
+	height: 120px;
+}
+.banner .banner_right .right1 a{
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+.banner .banner_right .right2 a{
+	border-bottom: 1px solid #ccc;
+}
+.banner .banner_right div a img{
+	width: 123px;
+}
+.banner .banner_right .goods_big a img{
+	width: 248px;
+	height: 120px;
+}
+.brand{
+	width: 1200px;
+	margin: 0px auto;
+	overflow: hidden;
+	font-family: "微软雅黑";
+}
+.brand h3{
+	font-weight: 500;
+	overflow: hidden;
+	margin: 30px 0 20px;
+}
+.brand .brand_title{
+	float: left;
+	font-size: 16px;
+	color: #333;
+	line-height: 24px;
+}
+.brand .brand_title span{
+	float: left;
+	width: 60px;
+	height: 20px;
+	background: url(../images/index/brand_new.png);
+	margin: 2px 5px 0 0;
+}
+.brand .brand_a{
+	float: right;
+	font-size: 12px;
+}
+.brand .brand_a a{
+	float: left;
+	margin-left: 30px;
+	color: #5E5E5E;
+}
+.brand .brand_a .a_now{
+	color: #ff464e;
+}
+.brand .brand_a a:hover{
+	color: #FF464E;
+}
+.brand .brand_main{
+	width: 1200px;
+	background: #fff;
+	padding: 20px 10px 0;
+}
+.brand .brand_main .brand_top ul{
+	overflow: hidden;
+}
+.brand .brand_main .brand_top ul li{
+	float: left;
+	margin: 0 11px;
+	position: relative;
+	background: #F6F6F6;
+}
+.brand .brand_main .brand_top ul li a{
+	float: left;
+	width: 370px;
+}
+.brand .brand_main .brand_top ul li a img{
+	width: 370px;
+}
+.brand_main .brand_top ul li a .p_bg{
+	position: absolute;
+	background: rgba(0, 0, 0, 0.5);
+	height: 25px;
+	width: 370px;
+	bottom: 44px;
+}
+.brand_main .brand_top ul li a .p_time{
+	position: absolute;
+	font-size: 12px;
+	color: #fff;
+	width: 100%;
+	text-align: center;
+	bottom: 44px;
+	line-height: 25px;
+}
+.brand_main .brand_top ul li a span{
+	float: left;
+	margin: 15px 0 15px 10px;
+	font-size: 12px;
+	color: #333;
+}
+.brand_main .brand_top ul li a button{
+	float: right;
+	margin: 10px 10px 0 0;
+	background: none;
+	border: 0;
+	color: #ff464e;
+	font-size: 14px;
+	width: 62px;
+	height: 30px;
+}
+.brand_main .brand_top ul li:hover a button{
+	background: #FF464E;
+	color: #fff;
+	border-radius: 5px;
+}
+.brand_main .brand_bottom ul{
+	overflow: hidden;
+	padding: 20px 0;
+}
+.brand_main .brand_bottom ul li{
+	float: left;
+	margin: 0 10px;
+	font-size: 12px;
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+}
+.brand_main .brand_bottom ul li:nth-of-type(10){
+	width: 80px;
+}
+.brand_main .brand_bottom ul li a{
+	float: left;
+	color: #FF464E;
+}
+.brand_main .brand_bottom ul li a img{
+	width: 70px;
+}
+.brand_main .brand_bottom ul li a:hover{
+	text-decoration: underline;
+}
+.new{
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding-bottom: 40px;
+}
+.new .new_title{
+	font-size: 16px;
+	color: #333;
+	background: url(../images/index/icon_new.png) no-repeat left center;
+	padding-left: 65px;
+	margin: 30px 0;
+	font-weight: 500;
+}
+.new .new_title span{
+	font-size: 12px;
+	color: #999;
+	margin: 0 10px 0 5px;
+}
+.new .new_main ul{
+	overflow: hidden;
+}
+.new .new_main ul li{
+	width: 285px;
+	float: left;
+	margin: 0 18px 18px 0;
+}
+.new .new_main ul li:nth-of-type(4){
+	margin-right: 0;
+}
+.new .new_main ul li .goods_box{
+	position: relative;
+	margin-bottom: 20px;
+	background: #fff;
+	display: block;
+}
+.new .new_main ul li .goods_box b{
+	width: 37px;
+	height: 37px;
+	position: absolute;
+	background: url(../images/index/new.png);
+	top: 0;
+	left: 0;
+}
+.new .new_main ul li .goods_box img{
+	width: 285px;
+}
+.new .new_main ul li .goods_box .desc{
+	overflow: hidden;
+	width: 100%;
+	font-size: 12px;
+	padding: 10px 10px 9px 5px;
+	color: #bbb;
+}
+.new .new_main ul li .goods_box .desc a{
+	float: left;
+	color: #333;
+}
+.new .new_main ul li .goods_box .desc .goods_new{
+	float: right;
+}
+.new .new_main ul li .goods_box h3{
+	width: 100%;
+	overflow: hidden;
+	font-size: 14px;
+	font-weight: 500;
+	position: relative;
+}
+.new .new_main ul li .goods_box h3 .price{
+	float: left;
+	font-size: 48px;
+	color: #ff464e;
+	font-weight: 800;
+}
+.new .new_main ul li .goods_box h3 .price .price_icon{
+	font-size: 14px;
+}
+.new .new_main ul li .goods_box h3 .price .pricebefore{
+	font-size: 14px;
+	color: #bbb;
+	text-decoration: line-through;
+}
+.new .new_main ul li .goods_box h3 a{
+	float: right;
+	color: #ff464e;
+	height: 48px;
+	line-height: 75px;
+	width: 70px;
+	text-align: center;
+}
+.new .new_main ul li .goods_box h3 button{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	background: #FF464E;
+	color: #FFFFFF;
+	border: 0;
+	width: 70px;
+	height: 30px;
+	display: none;
+}
+.new .new_main ul li .goods_box:hover h3 button{
+	display: block;
+}
+.new .pagebox{
+	padding: 30px 0 45px;
+}
+.new .page{
+	margin: 0 auto;
+	width: 410px;
+	overflow: hidden;
+}
+.new .page .pre_page{
+	color: #bbb;
+    font-weight: normal;
+    background: #fff;
+    width: 90px;
+    border-radius: 20px 0 0 20px;
+    box-shadow: 1px 1px 3px rgba(204, 204, 204, 0.7);
+}
+.new .page span{
+	background: #ff464e;
+    border: medium none;
+    color: #fff;
+    font-weight: bold;
+}
+.page a, .page span, .page i {
+    display: inline-block;
+    float: left;
+    background: none repeat scroll 0 0 #FFF;
+    margin-left: 1px;
+    padding: 10px 15px;
+    overflow: hidden;
+    color: #919191;
+    font-size: 14px;
+    font-weight: bold;
+    border-right: none;
+    box-shadow: 1px 1px 0px rgba(204, 204, 204, 0.7);
+}
+.new .page .next_page{
+	width: 90px;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 1px 1px 3px rgba(204, 204, 204, 0.7);
+}
+.page a:hover{
+	background: #FF464E;
+}
+

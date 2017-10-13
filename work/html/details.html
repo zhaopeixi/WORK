@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../css/details.css"/>
+		<script type = "text/javascript" src="../js/jquery-1.11.3.js"></script>
+		<script type = "text/javascript" src="../js/jquery.cookie.js"></script>
+		<script>
+			$(function(){
+				$.ajax({
+					type:"get",
+					url:"../data/details_infor.json",
+					success: function(res){
+						//头部链接
+						$(".nav_links").find("a").eq(2).html(res[0].title);
+						
+						//商品标题
+						$(".detail_infor").find("h4").html(res[0].desc);
+						$(".detail_infor").find("h4").attr("id", res[0].id);
+						
+						//商品价格
+						$(".detail_price").html('<em>￥</em>' + res[0].priceNow + '.0<span>' + res[0].discout + '折</span><i>￥' + res[0].priceBefor + '</i>');
+						
+						//商品详情 表格
+						$(".param").find("table").html('<tr><td>适用季节：' + res[0].useSeason + '</td><td>主材质：' + res[0].mainMaterials + '</td><td>尺寸：' + res[0].size + '</td></tr><tr><td>款式：' + res[0].style + '</td><td>内部结构：' + res[0].inside + '</td><td>上市季节：' + res[0].inSeason + '</td></tr><tr><td>材质：' + res[0].materials + '</td><td>计量单位：' + res[0].measure + '</td></tr>');
+						
+						//发货详情
+						$(".transfet_text").find("p").eq(0).html('<b>商家提醒：</b>此商品由品牌商从<b>【' + res[0].sendAdd + '】</b>通过<b>【' + res[0].expressage1 + '】</b>、<b>【' + res[0].expressage2 + '】</b>、<b>【' + res[0].expressage3 + '】</b>发货');
+						
+					}
+				});
+				
+				var oShow = document.getElementById("show");
+				
+				getAddress();
+				getImgBig(oShow);
+				getMoreLike();
+				getImgSmall();
+				getColor();
+				
+			})
+			
+			function getAddress(){
+				$.ajax({
+					type:"get",
+					url:"../data/address.json",
+					success: function(res){
+						var html = "";
+						var isFar = false;
+						var add = null;
+//						alert(res.length);
+						for(var i = 0; i < res.length; i++){
+							html += '<li><a href = "#" isFar = "' + res[i].isFar + '">' + res[i].add + '</a></li>';
+						}
+						$("#add_id").html(html);
+						
+						$("#add_id").on("click", "a", function(){
+							isFar = $(this).attr("isFar");
+							add = $(this).html();
+							$(".add em").html(add);
+							
+							if(isFar == 1){
+								$("#free_id").html("运费8元");
+							}else{
+								$("#free_id").html("免运费");
+							}
+							return false;
+						})
+					}
+				});
+			}
+			
+			function getImgBig(oShow){
+				$.ajax({
+					type:"get",
+					url:"../data/details_imgBig.json",
+					success: function(res){
+						for(var i = 0; i < res.length; i++){
+							var oImg = document.createElement("img");
+							oImg.src = res[i].img;
+							
+							oShow.appendChild(oImg);
+						}
+					}
+				});
+			}
+			
+			function getImgSmall(){
+				var now = 1;
+				$.ajax({
+					type:"get",
+					url:"../data/details_img.json",
+					success: function(res){
+						var html = "";
+						for(var i = 0; i < res.length; i++){
+							html += '<img src="' + res[i].imgSamll + '" num="' + res[i].num + '" />';
+						}
+						
+						$(".breviary").html(html);
+						
+						$(".breviary").on("mouseover", "img", function(){
+							now = $(this).attr("num") - 1;
+							$(".detail_img").html('<img src="' + res[now].imgBig + '" />');
+						})
+					}
+				});
+			}
+			
+			function getMoreLike(){
+				$.ajax({
+					type:"get",
+					url:"../data/more.json",
+					success: function(res){
+						var html = "";
+						for(var i = 0; i < res.length; i++){
+							html += '<li><a href="#"><img src="' + res[i].img + '"/><p><span>￥</span><i>' + res[i].price + '</i></p></a></li>';
+						}
+						
+						$(".like_li").html(html);
+					}
+				});
+			}
+			
+			function getColor(){
+				$.ajax({
+					type:"get",
+					url:"../data/details_color.json",
+					success: function(res){
+						var html = "颜色：";
+						for(var i = 0; i < res.length; i++){
+							html += '<a href="#"><img src="' + res[i].img + '" alt="' + res[i].color + '" /></a>'
+						}
+						$(".detail_color").html(html);
+						
+						$(".detail_color").on("click", "img", function(){
+							$(".detail_color img").css("border", "");
+							
+							$(this).css("border", "2px solid #ff464e");
+							return false;
+						})
+					}
+				});
+			}
+		</script>
+		<script>
+			$(function(){
+				
+				$(".decrease").click(function(){
+					var value = $("#count").attr("value");
+					if(value > 1){
+						value--;
+					}else{
+						value == 1;
+					}
+					
+					$("#count").attr("value", value);
+				})
+				
+				$(".increase").click(function(){
+					var value = $("#count").attr("value");
+					value++;
+					$("#count").attr("value", value);
+				})
+				
+				$("#cart").click(function(){
+					
+					var value = $("#count").attr("value");
+					var id = $("h4").attr("id");
+					
+					//判断是否是第一次添加cookie
+					var first = $.cookie("goods") == null ? true : false;
+
+					if(first){
+						//第一次添加  [{id:id,num:1}]
+						$.cookie("goods", '[{id:"' + id + '",num:" '+ value + '"}]', {expires: 7});
+					}else{
+						var str = $.cookie("goods");
+						var arr = eval(str);
+
+						for(var i in arr){
+							//遍历所以存储的商品是否有相同的id，有则num+
+							if(arr[i].id == id){
+								value = parseInt(value);
+								arr[i].num = parseInt(arr[i].num);
+								arr[i].num = arr[i].num + value;
+								var cookieStr = JSON.stringify(arr);
+								$.cookie("goods", cookieStr, {expires: 7});
+
+								break;
+							}
+						}
+					}
+//					alert($.cookie("goods"));
+
+					//页面控件非常多，非常容易叠加，很容易造成事件冒泡
+					return false;
+				})
+			})
+		</script>
+	</head>
+	<body style = "background: #F6F6F6;">
+		<div class = "headerbox">
+			<div class = "header">
+				<ul class = "header_li">
+					<li><a href="login.html">登录</a><a href="register.html">免费注册</a>|</li>
+					<li><a href="#">我的订单</a></li>
+					<li class = "point_shop"><a href="#">积分商城</a></li>
+					<li class = "imfor"><a href="#">我的信息</a></li>
+					<li>商家中心</li>
+					<li>客户服务</li>
+				</ul>
+			</div>
+		</div>
+		<div class = "titlebox">
+			<div class = "title">
+				<div class = "logo">
+					<a href = "#"></a>
+				</div>
+				<div class = "search">
+					<input type = "text" placeholder = "请输入想找的宝贝" />
+				</div>
+				<div class = "protection">
+					<a href="#" class = "ten"></a>
+					<a href="#" class = "buyer"></a>
+					<a href="#" class = "check"></a>
+				</div>
+			</div>
+		</div>
+		<div class = "navbox">
+			<div class = "mainnav">
+				<ul>
+					<li><a href="#">最新折扣</a></li>
+					<li><a href="#">品牌折扣</a></li>
+					<li class = "navnow"><a href="#">特卖精选</a></li>
+					<li><a href="#">9.9包邮</a></li>
+					<li><a href="#">即将上线</a></li>
+					<li><a href="#">手机版</a></li>
+				</ul>
+				<div class = "sign"><a href="#">签到领积分</a></div>
+			</div>
+		</div>
+		<p class = "nav_links"><a href="#">卷皮折扣</a> > <a href="#">特卖精选</a> > <a href="#"></a></p>
+		<div class = "detail">
+			<div class = "detail_img"><img src="../images/details/imgbig1.jpg" /></div>
+			<div class = "detail_infor">
+				<h4 class = "h4_"></h4>
+				<p class = "detail_price"></p>
+				<div class = "address">配送至：
+					<div class = "add">
+						<em>山东省</em>
+						<i></i>
+						<ul id = "add_id"></ul>
+					</div>
+					<span id = "free_id">免运费</span>
+				</div>
+				<p class = "service">
+					客服：<a href="#"></a>
+				</p>
+				<p class = "detail_color"></p>
+				<div class = "detail_count">
+					<span>数量：</span>
+					<p>
+						<i class = "decrease">-</i>
+						<input id = "count" type="text" value="1" />
+						<i class = "increase">+</i>
+					</p>
+				</div>
+				<p class = "detail_btn">
+					<button id = "buy">直接购买</button>
+					<button id = "cart">加入购物车</button>
+				</p>
+				<div class = "other">
+					<a href="#"><span class = "collect"></span>收藏</a>
+					<a href="#" class = "share"><span class = "share_icon"></span>分享</a>
+					<a href="#">举报</a>
+				</div>
+			</div>
+			<div class = "breviary"></div>
+		</div>
+		<div class = "guarantee">
+			<a href="#" class = "shop_name">锦上花潮流女包专营店</a>
+			<p class = "gold">卷皮金牌认证商家</p>
+			<p class = "deposit">已缴纳保证金</p>
+			<a href="#" class = "license">营业执照</a>
+			<p class = "postage">全国包邮 低价保障</p>
+			<p class = "test">100%人工质检</p>
+			<p class = "deliver">24小时闪电发货</p>
+			<p class = "return">7天无理由退货</p>
+		</div>
+		<div class = "content">
+			<div class = "content_nav">
+				<a href="#goods_detail" class = "active">商品详情</a>
+				<a href="#transfer">物流与售后</a>
+				<a href="#protection">消费保障</a>
+				<a href="#" class = "tel">
+					手机购买
+					<div class = "code">随时逛 及时抢</div>
+				</a>
+			</div>
+			<div id = "goods_detail">
+				<a href="#goodsshow" class = "show_title">产品展示</a>
+				<div class = "param">
+					<p class = "detail_title"><span>参数规格</span></p>
+					<table></table>
+				</div>
+				<div id = "goodsshow">
+					<p class = "detail_title"><span>产品展示</span></p>
+					<div class = "show" id = "show"></div>
+				</div>
+				<div id = "transfer">
+					<p class = "detail_title"><span>物流与售后</span></p>
+					<div class = "transfet_text">
+						<p><b>商家提醒：</b>此商品由品牌商从<b>【河北保定】</b>通过<b>【百世汇通】</b>、<b>【申通快递】</b>、<b>【邮政国内小包】</b>发货</p>
+						<p><b>24小时发货：</b>买家付款成功后，商家将在24小时内完成发货。（节假日等特殊情况除外）</p>
+						<p><b>包裹跟踪：</b>您可在<a href="#">【我的订单】</a>中查询物流跟踪信息。</p>
+						<p><b>确认收货：</b>当快件送达至您的收货地址后，卷皮将为您自动确认收货并将奖励积分发放至您的账户。</p>
+						<img src="../images/details/renturn-process.jpg" />
+						<h6>售后服务承诺</h6>
+						<p>收到货后，如果因为主观原因不喜欢/不想要了，在不影响二次销售的情况下，签收后7天内，卷皮网为您提供七天无理由退货服务。如果未收到货或收到商品有质量问题，您可以在签收后15天内申请售后。 <a href="#">售后服务说明>></a></p>
+						<h6>运费补贴政策</h6>
+						<p>当您的退货商品单价≥29元，卷皮将提供价值10元的退货运费补贴。（每个订单仅补充一次优惠券） <a href="#">退货运费补贴说明>></a></p>
+						<h6>价格说明</h6>
+						<p>关于卷皮商品价格的说明 <a href="#">查看详情>></a></p>
+					</div>
+				</div>
+				<div id = "protection">
+					<p class = "detail_title"><span>消费保障</span></p>
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<div id = "li_img">
+						<div class = "img_active"><img src="../images/details/cp02_1.jpg" /></div>
+						<div><img src="../images/details/cp02_2.jpg" /></div>
+						<div><img src="../images/details/cp02_3.jpg" /></div>
+						<div><img src="../images/details/cp02_4.jpg" /></div>
+						<div><img src="../images/details/cp02_5.jpg" /></div>
+						<div><img src="../images/details/cp02_6.jpg" /></div>
+						<div><img src="../images/details/cp02_7.jpg" /></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class = "guess_like">
+			<p class = "like_box"><span>猜你喜欢</span></p>
+			<ul class = "like_li"></ul>
+		</div>
+		<div class = "footbox">
+			<div class = "foot">
+				<div class = "foot_top">
+					<div class = "top_left">随时逛 及时抢</div>
+					<div class = "top_cen">
+						<ul>
+							<li>获取更新</li>
+							<li><a href="#">iPhone/Android</a></li>
+							<li><a href="#">卷皮QQ空间</a></li>
+							<li><a href="#">卷皮新浪微博</a></li>
+							<li><a href="#">开放API</a></li>
+						</ul>
+						<ul>
+							<li>商务合作</li>
+							<li><a href="#">卖家免费报名</a></li>
+							<li><a href="#">商家入驻</a></li>
+							<li><a href="#">廉政邮箱</a></li>
+							<li><a href="#">开放平台</a></li>
+						</ul>
+						<ul>
+							<li>公司信息</li>
+							<li><a href="#">关于卷皮</a></li>
+							<li><a href="#">媒体报道</a></li>
+						</ul>
+						<ul>
+							<li>帮助中心</li>
+							<li><a href="#">新手上路</a></li>
+							<li><a href="#">积分攻略</a></li>
+							<li><a href="#">网站地图</a></li>
+						</ul>
+					</div>
+					<div class = "top_right">
+						<a href="#"></a>
+						<p>周一至周日9:00-21:00 </p>
+					</div>
+				</div>
+				<p>武汉奇米网络科技有限公司 鄂ICP备10209250号 | ICP许可证号：鄂B1-20150109 | <a href="#">鄂公网安备42018502000390号</a> | 食品流通许可证 SP4201991510041888　　
+Copyright © 2010 -2017 JuanPi.com All Rights Reserved</p>
+			</div>
+		</div>
+		<div class = "aside">
+			<div class = "aside_top">
+				<div class = "normal aside_user"><a href="#"></a></div>
+				<div class = "normal aside_love"><a href="cart.html"></a></div>
+				<div class = "normal aside_quan"><a href="#"></a></div>
+			</div>
+			<div class = "aside_bottom">
+				<div class = "normal aside_pen"><a href="#"></a></div>
+				<div class = "normal aside_code"><a href="#"></a></div>
+			</div>
+		</div>
+	</body>
+</html>

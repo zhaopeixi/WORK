@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/cart.css"/>
+		<script type = "text/javascript" src="../js/jquery-1.11.3.js"></script>
+		<script type = "text/javascript" src="../js/jquery.cookie.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$.ajax({
+					type:"get",
+					url:"../data/details_infor.json",
+					success: function(res){
+//						alert($.cookie("goods"));
+						var arr = eval($.cookie("goods"));
+						
+						var html = "";
+						for(var i in arr){
+							html += '<div class = "goods"><input  class = "check_goods" type="checkbox" /><img src=' + res[i].img + '/><p class = "goods_desc">' + res[i].desc + '</p><p class = "price_goods">￥' + res[i].priceNow + '.00</p><div class = "num_goods"><i class = "decrease">-</i><input id = "count_goods" type="text" value="' + arr[i].num + '" /><i class = "increase">+</i></div><p class = "sum_price">￥' + res[i].priceNow * arr[i].num + '.00</p><button id = "del_btn">删除</button></div>'
+						}
+						
+						$(".cart_box").html(html);
+						
+						decrease();
+						increase();
+						deleteCookie();
+					}	
+			});
+		})
+			
+			
+			
+			function decrease(){
+				var eachPrice = $(".price_goods").html();
+				eachPrice = eachPrice.substring(1, eachPrice.length - 3);
+				
+				$(".decrease").click(function(){
+					var value = $("#count_goods").attr("value");
+					if(value > 1){
+						value--;
+						var str = $.cookie("goods");
+						var arr = eval(str);
+						
+						arr[0].num--;
+						var cookieStr = JSON.stringify(arr);
+						$.cookie("goods", cookieStr, {expires: 7});
+					}else{
+						value == 1;
+					}
+					$("#count_goods").attr("value", value);
+					
+					$(".sum_price").html("￥" + eachPrice * value + ".00");
+				})
+			}
+			
+			function increase(){
+				var eachPrice = $(".price_goods").html();
+				eachPrice = eachPrice.substring(1, eachPrice.length - 3);
+				
+				$(".increase").click(function(){
+					var value = $("#count_goods").attr("value");
+					value++;
+					
+					var str = $.cookie("goods");
+					var arr = eval(str);
+					
+					arr[0].num++;
+					var cookieStr = JSON.stringify(arr);
+					$.cookie("goods", cookieStr, {expires: 7});
+					
+					$("#count_goods").attr("value", value);
+					
+					$(".sum_price").html("￥" + eachPrice * value + ".00");
+				})
+			}
+			
+			function deleteCookie(){
+				$("#del_btn").click(function(){
+					$(this).parent().css("display", "none");
+					
+					$.cookie("goods");
+				})
+			}
+			
+			/*
+				<div class = "goods">
+					<input  class = "check_goods" type="checkbox" />
+					<img src="../images/aaa/cart01.jpg"/>
+					<p class = "goods_desc">同款logo红色卫衣男女oversize外套
+	</p>
+					<p class = "price_goods">￥128.00</p>
+					<div class = "num_goods">
+						<i class = "decrease">-</i>
+						<input class = "count_goods" type="text" value="1" />
+						<i class = "increase">+</i>
+					</div>
+					<p class = "sum_price">￥128.00</p>
+					<button>删除</button>
+				</div> 
+			*/
+		</script>
+	</head>
+	<body style = "background: #F6F6F6;">
+		<div class = "headerbox">
+			<div class = "header">
+				<ul class = "header_li">
+					<li><a href="html/login.html">登录</a><a href="html/register.html">免费注册</a>|</li>
+					<li><a href="#">我的订单</a></li>
+					<li class = "point_shop"><a href="#">积分商城</a></li>
+					<li class = "imfor"><a href="#">我的信息</a></li>
+					<li>商家中心</li>
+					<li>客户服务</li>
+				</ul>
+			</div>
+		</div>
+		<div class = "titlebox">
+			<div class = "title">
+				<div class = "logo">
+					<a href = "#"></a>
+				</div>
+				<div class = "protection">
+					<a href="#" class = "ten"></a>
+					<a href="#" class = "buyer"></a>
+					<a href="#" class = "check"></a>
+				</div>
+			</div>
+		</div>
+		<div class = "navbox">
+			<div class = "mainnav">
+				<ul>
+					<li><a href="https://user.juanpi.com/">我的卷皮</a></li>
+					<li><a href="https://user.juanpi.com/setting">账号设置</a></li>
+					<li><a href="https://user.juanpi.com/message">消息中心</a></li>
+				</ul>
+				<div class = "sign"><a href="../index.html">卷皮首页>></a></div>
+			</div>
+		</div>
+		<div class = "cart">
+			<div class = "cart_title">
+				<p class = "goods_infor">商品信息</p>
+				<p class = "unit_price">单价</p>
+				<p class = "num">数量</p>
+				<p class = "sum">金额</p>
+				<p class = "delete">删除</p>
+			</div>
+			<div class = "cart_box">
+				<!--<div class = "goods">
+					<input  class = "check_goods" type="checkbox" />
+					<img src="../images/aaa/cart01.jpg"/>
+					<p class = "goods_desc">同款logo红色卫衣男女oversize外套
+	</p>
+					<p class = "price_goods">￥128.00</p>
+					<div class = "num_goods">
+						<i class = "decrease">-</i>
+						<input class = "count_goods" type="text" value="1" />
+						<i class = "increase">+</i>
+					</div>
+					<p class = "sum_price">￥128.00</p>
+					<button>删除</button>
+				</div>-->
+			</div>
+			<input class = "buy" type="button" value="结算" />
+		</div>
+		<div class = "footbox">
+			<div class = "foot">
+				<div class = "foot_top">
+					<div class = "top_left">随时逛 及时抢</div>
+					<div class = "top_cen">
+						<ul>
+							<li>获取更新</li>
+							<li><a href="#">iPhone/Android</a></li>
+							<li><a href="#">卷皮QQ空间</a></li>
+							<li><a href="#">卷皮新浪微博</a></li>
+							<li><a href="#">开放API</a></li>
+						</ul>
+						<ul>
+							<li>商务合作</li>
+							<li><a href="#">卖家免费报名</a></li>
+							<li><a href="#">商家入驻</a></li>
+							<li><a href="#">廉政邮箱</a></li>
+							<li><a href="#">开放平台</a></li>
+						</ul>
+						<ul>
+							<li>公司信息</li>
+							<li><a href="#">关于卷皮</a></li>
+							<li><a href="#">媒体报道</a></li>
+						</ul>
+						<ul>
+							<li>帮助中心</li>
+							<li><a href="#">新手上路</a></li>
+							<li><a href="#">积分攻略</a></li>
+							<li><a href="#">网站地图</a></li>
+						</ul>
+					</div>
+					<div class = "top_right">
+						<a href="#"></a>
+						<p>周一至周日9:00-21:00 </p>
+					</div>
+				</div>
+				<div class = "foot_links">
+					<dl>
+						<dt>友情链接：</dt>
+						<dd><a href="#">九块邮</a></dd>
+						<dd><a href="#">易迅优惠券</a></dd>
+						<dd><a href="#">中国鲜花礼品网</a></dd>
+						<dd><a href="#">钻石小鸟</a></dd>
+						<dd><a href="#">箱包品牌</a></dd>
+						<dd><a href="#">网上购物</a></dd>
+						<dd><a href="#">中国品牌网</a></dd>
+						<dd><a href="#">家具网</a></dd>
+						<dd><a href="#">国画</a></dd>
+						<dd><a href="#">易登网</a></dd>
+					</dl>
+					<a href="#" class = "more">更多>>></a>
+				</div>
+				<p>武汉奇米网络科技有限公司 鄂ICP备10209250号 | ICP许可证号：鄂B1-20150109 | <a href="#">鄂公网安备42018502000390号</a> | 食品流通许可证 SP4201991510041888　　
+Copyright © 2010 -2017 JuanPi.com All Rights Reserved</p>
+			</div>
+		</div>
+	</body>
+</html>

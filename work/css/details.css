@@ -1,0 +1,522 @@
+.nav_links{
+	width: 1200px;
+	margin: 0 auto;
+	font-size: 12px;
+	padding: 20px 0;
+}
+.nav_links a{
+	color: #5e5e5e;
+}
+.nav_links a:hover{
+	text-decoration: underline;
+}
+.detail{
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+	background: #fff;
+	padding: 30px;
+}
+.detail .detail_img{
+	float: left;
+}
+.detail .detail_infor{
+	float: left;
+	margin-left: 50px;
+	width: 560px;
+}
+.detail .detail_infor h4{
+	margin-bottom: 20px;
+}
+.detail .detail_infor .detail_price{
+	font-size: 40px;
+	color: #FF464E;
+	font-weight: 800;
+}
+.detail .detail_infor .detail_price em{
+	font-style: normal;
+	font-size: 20px;
+}
+.detail .detail_infor .detail_price span{
+	display: inline-block;
+	width: 51px;
+	height: 20px;
+	background: url(../images/details/discount-icon.gif) no-repeat;
+	font-size: 12px;
+	color: #fff;
+	padding: 3px 0 0 15px;
+}
+.detail .detail_infor .detail_price i{
+	color: #999;
+	font-style: normal;
+	text-decoration: line-through;
+	font-size: 12px;
+	margin-left: 5px;
+	height: 50px;
+	line-height: 50px;
+	display: inline-block;
+}
+.detail .detail_infor .address{
+	font-size: 12px;
+	color: #999;
+}
+.detail .detail_infor .address .add{
+	display: inline-block;
+}
+.detail .detail_infor .address .add ul{
+	display: none;
+	position: absolute;
+	background: #fff;
+	width: 377px;
+	border: #e2e2e2 solid 1px;
+	padding: 10px 0 10px 15px;
+	z-index: 10;
+}
+.detail .detail_infor .address .add ul li{
+	float: left;
+	width: 120px;
+	height: 24px;
+	line-height: 24px;
+}
+.detail .detail_infor .address .add ul li a{
+	color: #0289CD;
+}
+.detail .detail_infor .address .add ul li a:hover{
+	text-decoration: underline;
+}
+.detail .detail_infor .address .add i{
+	background: url(../images/details/mall-total.gif) no-repeat;
+	width: 9px;
+	height: 5px;
+	display: inline-block;
+}
+.detail .detail_infor .address .add em{
+	font-style: normal;
+	color: #333;
+	line-height: 32px;
+}
+.detail .detail_infor .address span{
+	background: #FF464E;
+	color: #fff;
+	line-height: 16px;
+	display: inline-block;
+}
+.detail .detail_infor .address .add:hover ul{
+	display: block;
+}
+.detail .detail_infor .service{
+	font-size: 12px;
+	color: #999;
+	line-height: 40px;
+	height: 40px;
+	border-bottom: 1px dotted #999;
+}
+.detail .detail_infor .service a{
+	color: #fff;
+	background: url(../images/details/kf_img.png) no-repeat;
+	width: 75px;
+	height: 20px;
+	display: inline-block;
+}
+.detail .detail_infor .detail_color{
+	font-size: 12px;
+	color: #999;
+	margin: 30px 0 20px;
+}
+.detail .detail_infor .detail_color a img{
+	float: none;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.detail .detail_infor .detail_count{
+	font-size: 12px;
+	color: #999;
+	margin-bottom: 20px;
+}
+.detail .detail_infor .detail_count p{
+	border: 1px solid #e2e2e2;
+	width: 94px;
+	height: 28px;
+	display: inline-block;
+	text-align: center;
+	line-height: 28px;
+}
+.detail .detail_infor .detail_count span{
+	float: left;
+	height: 28px;
+	line-height: 28px;
+}
+.detail .detail_infor .detail_count p i{
+	float: left;
+	width: 26px;
+	height: 28px;
+	font-style: normal;
+	line-height: 28px;
+	cursor: pointer;
+}
+.detail .detail_infor .detail_count p .increase{
+	font-weight: 800;
+}
+.detail .detail_infor .detail_count p input{
+	width: 40px;
+	height: 26px;
+	border: 0;
+	border-left: 1px solid #e2e2e2;
+	border-right: 1px solid #e2e2e2;
+	float: left;
+	background: #f6f6f6;
+	text-align: center;
+}
+.detail .detail_infor .detail_btn button{
+	width: 90px;
+	height: 40px;
+	background: #ff464e;
+	border: 0;
+	color: #fff;
+	border-radius: 2px;
+	margin-right: 10px;
+}
+.detail .detail_infor .detail_btn button:hover{
+	background: #f66;
+}
+.detail .detail_infor .other{
+	font-size: 12px;
+	margin: 20px 0 0 30px;
+}
+.detail .detail_infor .other a{
+	color: #666;
+	margin: 0 10px;
+	width: 50px;
+	float: left;
+}
+.detail .detail_infor .other a:hover{
+	color: #ff464e;
+}
+.detail .detail_infor .other a span{
+	width: 17px;
+	height: 15px;
+	float: left;
+	margin-right: 3px;
+}
+.detail .detail_infor .other a .collect{
+	background: url(../images/details/mall-total.gif) no-repeat -108px top;
+}
+.detail .detail_infor .other a .share_icon{
+	background: url(../images/details/mall-total.gif) no-repeat right -25px;
+}
+.detail .detail_infor .other .share:hover .share_icon{
+	background: url(../images/details/mall-total.gif) no-repeat -104px -23px;
+}
+.detail .breviary{
+	float: left;
+	clear: both;
+	margin-top: 10px;
+	padding-left: 5px;
+}
+.detail .breviary img{
+	margin-left: 5px;
+}
+.detail .breviary img:hover{
+	border: 1px solid #333333;
+	width: 58px;
+}
+.guarantee{
+	width: 1200px;
+	margin: 0 auto;
+	border-top: 1px solid #F6F6F6;
+	border-bottom: 1px solid #F6F6F6;
+	height: 122px;
+	background: #fff url(../images/details/pc-advantage-bg-1200.png) no-repeat center center;
+	padding: 20px 0;
+	position: relative;
+	font-size: 12px;
+	color: #5e5e5e;
+}
+.guarantee p, .guarantee a{
+	position: absolute;
+}
+.guarantee .shop_name{
+	color: #5e5e5e;
+	top: 28px;
+	left: 170px;
+}
+.guarantee .shop_name:hover{
+	text-decoration: underline;
+	color: #ff464e;
+}
+.guarantee .gold{
+	top: 56px;
+	left: 145px;
+}
+.guarantee .deposit{
+	top: 56px;
+	left: 278px;
+}
+.guarantee .license{
+	top: 80px;
+	left: 145px;
+	color: #5E5E5E;
+}
+.guarantee .license:hover{
+	text-decoration: underline;
+}
+.guarantee .postage{
+	top: 55px;
+	left: 505px;
+}
+.guarantee .test{
+	top: 55px;
+	right: 415px;
+}
+.guarantee .deliver{
+	top: 55px;
+	right: 235px;
+}
+.guarantee .return{
+	top: 55px;
+	right: 65px;
+}
+.content{
+	margin: 0 auto;
+	width: 1200px;
+	background: #fff;
+}
+.content .content_nav{
+	background: #F6F6F6;
+	height: 40px;
+}
+.content .content_nav a{
+	float: left;
+	padding: 0 40px;
+	line-height: 40px;
+	color: #666;
+	border-right: 1px solid #d4d4d4;
+	font-size: 14px;
+}
+.content .content_nav a:hover{
+	text-decoration: underline;
+}
+.content .content_nav .active{
+	border-bottom: #ff464e solid 2px;
+    color: #ff464e;
+    font-weight: bold;
+    background: #fff;
+}
+.content .content_nav .active:hover{
+	text-decoration: none;
+}
+.content .content_nav .code{
+	display: none;
+	position: absolute;
+	background: #fff url(../images/public/code2.png) no-repeat center 10px;
+	background-size: 120px 120px;
+	width: 136px;
+	height: 160px;
+	left: 0;
+	top: 50px;
+	border: 1px solid #ccc;
+	font-size: 14px;
+	line-height: 290px;
+	text-align: center;
+}
+.content .content_nav .tel{
+	position: relative;
+}
+.content .content_nav .tel:hover .code{
+	display: block;
+}
+.content #goods_detail{
+	padding: 25px 40px;
+}
+.content .show_title{
+	font-size: 12px;
+	color: #666;
+	margin-bottom: 20px;
+	display: block;
+	width: 80px;
+	border-right: 1px solid #CCCCCC;
+}
+.content .show_title:hover{
+	text-decoration: underline;
+}
+.detail_title{
+	height: 19px;
+	margin: 50px 0 30px;
+	border-top: 1px solid #2a142b;
+	width: 100%;
+	position: relative;
+}
+.detail_title span{
+	position: absolute;
+	top: -10px;
+	background: url(../images/details/info_bg.gif) no-repeat;
+	width: 125px;
+	text-align: center;
+	font-size: 18px;
+	font-family: "微软雅黑";
+	height: 18px;
+	line-height: 18px;
+}
+.content #goods_detail .param table{
+	width: 67%;
+	margin: 20px auto;
+	table-layout: fixed;
+	border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 12px;
+    color: #666;
+}
+.content #goods_detail .param table td{
+	border: 1px solid #e2e2e2;
+    padding: 0 20px;
+    text-align: left;
+    height: 40px;
+}
+.content #goods_detail #goodsshow{
+	overflow: hidden;
+}
+.content #goods_detail #goodsshow .show{
+	overflow: hidden;
+}
+.content #goods_detail #goodsshow .show img{
+	float: none;
+	margin: 0 auto;
+}
+.content #goods_detail #transfer{
+	overflow: hidden;
+}
+.content #goods_detail #transfer .transfet_text{
+	margin: 0 auto;
+	width: 810px;
+	font-size: 12px;
+}
+.content #goods_detail #transfer .transfet_text p{
+	line-height: 24px;
+}
+.content #goods_detail #transfer .transfet_text a{
+	color: #3399cc;
+}
+.content #goods_detail #transfer .transfet_text a:hover{
+	text-decoration: underline;
+}
+.content #goods_detail #transfer .transfet_text img{
+	float: none;
+	margin: 20px 0;
+}
+.content #goods_detail #transfer .transfet_text h6{
+	margin-top: 10px;
+	font-size: 12px;
+}
+.content #goods_detail #protection{
+	overflow: hidden;
+}
+.content #goods_detail #protection ul{
+	overflow: hidden;
+	width: 815px;
+	margin: 0 auto;
+}
+.content #goods_detail #protection ul li{
+	float: left;
+	width: 110px;
+	height: 94px;
+	background: url(../images/details/xiaobao.gif) no-repeat;
+}
+.content #goods_detail #protection ul li:nth-of-type(1){
+	background-position: 18px top;
+}
+.content #goods_detail #protection ul li:nth-of-type(2){
+	background-position: -92px top;
+}
+.content #goods_detail #protection ul li:nth-of-type(3){
+	background-position: -202px top;
+}
+.content #goods_detail #protection ul li:nth-of-type(4){
+	background-position: -312px top;
+}
+.content #goods_detail #protection ul li:nth-of-type(5){
+	background-position: -422px top;
+}
+.content #goods_detail #protection ul li:nth-of-type(6){
+	background-position: -532px top;
+}
+.content #goods_detail #protection ul li:nth-of-type(7){
+	background-position: -642px top;
+}
+.content #goods_detail #protection #li_img{
+	width: 815px;
+	margin: 50px auto;
+	overflow: hidden;
+}
+.content #goods_detail #protection #li_img div{
+	display: none;
+}
+.content #goods_detail #protection #li_img .img_active{
+	display: block;
+}
+.content #goods_detail #protection #li_img img{
+	float: none;
+}
+.guess_like{
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+	margin-bottom: 50px;
+}
+.guess_like .like_box{
+	margin: 60px 0 30px;
+	border-top: 1px solid #2a142b;
+	position: relative;
+	width: 100%;
+}
+.guess_like .like_box span{
+	position: absolute;
+    top: -14px;
+    left: 50%;
+    margin-left: -65px;
+    width: 130px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #f6f6f6;
+    color: #2a142b;
+    font-size: 18px;
+    font-family: "微软雅黑";
+    font-weight: 700;
+}
+.guess_like ul{
+	overflow: hidden;
+}
+.guess_like ul li{
+	float: left;
+	margin-right: 12px;
+}
+.guess_like ul li:nth-of-type(5){
+	margin-right: 0;
+}
+.guess_like ul li a{
+	float: left;
+	position: relative;
+	width: 230px;
+	height: 230px;
+	color: #666666;
+}
+.guess_like ul li a p{
+	position: absolute;
+	padding: 0 15px;
+	line-height: 30px;
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 20px;
+	right: 10px;
+	bottom: 13px;
+}
+.guess_like ul li a p span{
+	font-size: 14px;
+    font-family: "微软雅黑";
+}
+.guess_like ul li a p i{
+	font-style: normal;
+	font-size: 20px;
+	font-family: "Arial";
+	line-height: 30px;
+}

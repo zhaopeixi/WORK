@@ -1,0 +1,95 @@
+.log_centet{
+	padding: 30px 80px 0 160px;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+.log_left{
+	width: 275px;
+	float: left;
+}
+.log_centet .border_box{
+	border: 1px solid #c6c6c6;
+	width: 270px;
+	height: 42px;
+	margin-bottom: 25px;
+}
+.log_centet .border_box div{
+	width: 38px;
+	height: 38px;
+	float: left;
+}
+.log_centet .border_box .user_img{
+	background: url(../images/register/name2.jpg);
+}
+.log_centet .border_box .code_img{
+	background: url(../images/register/code2.jpg);
+}
+.log_centet .border_box input{
+	width: 226px;
+	height: 40px;
+	border: 0;
+	outline: none;
+	font-size: 12px;
+	padding-left: 5px;
+}
+.log_centet .log_imfor{
+	overflow: hidden;
+	font-size: 12px;
+	margin-bottom: 8px;
+}
+.log_centet .log_imfor p{
+	color: #5e5e5e;
+	float: left;
+}
+.log_centet .log_imfor p input{
+	width: 12px;
+	height: 12px;
+}
+.log_centet .log_imfor a{
+	float: right;
+	color: #999;
+}
+#loginbtn{
+	width: 240px;
+	height: 40px;
+	background: url(../images/register/new-login.gif) no-repeat;
+	color: #FFFFFF;
+	border: 0;
+	outline: none;
+	border-radius: 2px;
+	margin-bottom: 25px;
+	cursor: pointer;
+}
+#loginbtn:hover{
+	background-position: 0 -45px;
+}
+.team_login{
+	overflow: hidden;
+}
+.team_login .team_left{
+	float: left;
+}
+.team_login .team_left p{
+	font-size: 12px;
+	line-height: 16px;
+	color: #666;
+	margin-bottom: 10px;
+}
+.team_right{
+	float: right;
+	font-size: 14px;
+	line-height: 21px;
+	margin-top: 14px;
+}
+.team_right a{
+	color: #666666;
+}
+.team_right a:hover{
+	text-decoration: underline;
+}
+.log_right{
+	background: url(../images/register/login-bj-ad.png) no-repeat;
+	width: 349px;
+	height: 247px;
+	float: right;
+}

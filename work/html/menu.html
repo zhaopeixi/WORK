@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../css/menu.css"/>
+		<script type = "text/javascript" src="../js/jquery-1.11.3.js"></script>
+		<script type = "text/javascript" src="../js/jquery.cookie.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var aLis = $("#goods_id").find("li");
+				
+				getGoods(aLis);
+			})
+			
+			function getGoods(nodes){
+				$.ajax({
+					type:"get",
+					url:"../data/menu.json",
+					success: function(res){
+						for(var j = 0; j < res.length; j++){
+							var oA = document.createElement("a");
+							oA.href = "details.html";
+							oA.className = "goods_box";
+							var oB = document.createElement("b");
+							var oImg = document.createElement("img");
+							oImg.src = res[j].img;
+							var oPdesc = document.createElement("p");
+							oPdesc.className = "desc";
+							var oA1 = document.createElement("a");
+							oA1.href = "#";
+							oA1.innerHTML = res[j].desc;
+							var oSpannew = document.createElement("span");
+							oSpannew.className = "goods_new";
+							oSpannew.innerHTML = "上新";
+							oPdesc.appendChild(oA1);
+							oPdesc.appendChild(oSpannew);
+							
+							var oH3 = document.createElement("h3");
+							var oPprice = document.createElement("p");
+							oPprice.className = "price";
+							var oSpanpri1 = document.createElement("span");
+							oSpanpri1.className = "price_icon";
+							oSpanpri1.innerHTML = "￥";
+							var oSpanpri2 = document.createElement("span");
+							oSpanpri2.className = "pricebefore";
+							oSpanpri2.innerHTML = "￥" + res[j].priceBefore;
+							var oSpan = document.createElement("span");
+							oSpan.innerHTML = res[j].priceNow;
+							oPprice.appendChild(oSpanpri1);
+							oPprice.appendChild(oSpan);
+							oPprice.appendChild(oSpanpri2);
+							
+							var oA2 = document.createElement("a");
+							var oEm = document.createElement("em");
+							oA2.innerHTML = "品牌";
+							oA2.appendChild(oEm);
+							var oBtn = document.createElement("button");
+							oBtn.id = res[j].id;
+							oBtn.innerHTML = "进品牌";
+							
+							oH3.appendChild(oPprice);
+							oH3.appendChild(oA2);
+							oH3.appendChild(oBtn);
+							
+							oA.appendChild(oB);
+							oA.appendChild(oImg);
+							oA.appendChild(oPdesc);
+							oA.appendChild(oH3);
+							nodes[j % 4].appendChild(oA);
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body style = "background: #F6F6F6;">
+		<div class = "headerbox">
+			<div class = "header">
+				<ul class = "header_li">
+					<li><a href="login.html">登录</a><a href="register.html">免费注册</a>|</li>
+					<li><a href="#">我的订单</a></li>
+					<li class = "point_shop"><a href="#">积分商城</a></li>
+					<li class = "imfor"><a href="#">我的信息</a></li>
+					<li>商家中心</li>
+					<li>客户服务</li>
+				</ul>
+			</div>
+		</div>
+		<div class = "titlebox">
+			<div class = "title">
+				<div class = "logo">
+					<a href = "#"></a>
+				</div>
+				<div class = "search">
+					<input type = "text" placeholder = "请输入想找的宝贝" />
+				</div>
+				<div class = "protection">
+					<a href="#" class = "ten"></a>
+					<a href="#" class = "buyer"></a>
+					<a href="#" class = "check"></a>
+				</div>
+			</div>
+		</div>
+		<div class = "navbox">
+			<div class = "mainnav">
+				<ul>
+					<li class = "navnow"><a href="#">最新折扣</a></li>
+					<li><a href="#">品牌折扣</a></li>
+					<li><a href="#">特卖精选</a></li>
+					<li><a href="#">9.9包邮</a></li>
+					<li><a href="#">即将上线</a></li>
+					<li><a href="#">手机版</a></li>
+				</ul>
+				<div class = "sign"><a href="#">签到领积分</a></div>
+			</div>
+		</div>
+		<div class = "menu">
+			<ul>
+				<li><a href="#">今日上新</a></li>
+				<li><a href="#" class = "pick">女装</a></li>
+				<li><a href="#">男装</a></li>
+				<li><a href="#">鞋子</a></li>
+				<li><a href="#">箱包</a></li>
+				<li><a href="#">母婴</a></li>
+				<li><a href="#">美妆</a></li>
+				<li><a href="#">居家</a></li>
+				<li><a href="#">家纺</a></li>
+				<li><a href="#">文体</a></li>
+				<li><a href="#">美食</a></li>
+				<li><a href="#">数码</a></li>
+				<li><a href="#">电器</a></li>
+				<li><a href="#">内衣</a></li>
+				<li><a href="#">配饰</a></li>
+				<li><a href="#" class = "already">[即将上线]</a></li>
+			</ul>
+		</div>
+		<div class = "new">
+			<div class = "new_main">
+				<ul id = "goods_id">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class = "pagebox">
+				<div class = "page">
+					<span class = "pre_page">上一页</span>
+					<span>1</span>
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<i>...</i>
+					<a href="#">11</a>
+					<a href="#" class = "next_page">下一页</a>
+				</div>
+			</div>
+		</div>
+		<div class = "footbox">
+			<div class = "foot">
+				<div class = "foot_top">
+					<div class = "top_left">随时逛 及时抢</div>
+					<div class = "top_cen">
+						<ul>
+							<li>获取更新</li>
+							<li><a href="#">iPhone/Android</a></li>
+							<li><a href="#">卷皮QQ空间</a></li>
+							<li><a href="#">卷皮新浪微博</a></li>
+							<li><a href="#">开放API</a></li>
+						</ul>
+						<ul>
+							<li>商务合作</li>
+							<li><a href="#">卖家免费报名</a></li>
+							<li><a href="#">商家入驻</a></li>
+							<li><a href="#">廉政邮箱</a></li>
+							<li><a href="#">开放平台</a></li>
+						</ul>
+						<ul>
+							<li>公司信息</li>
+							<li><a href="#">关于卷皮</a></li>
+							<li><a href="#">媒体报道</a></li>
+						</ul>
+						<ul>
+							<li>帮助中心</li>
+							<li><a href="#">新手上路</a></li>
+							<li><a href="#">积分攻略</a></li>
+							<li><a href="#">网站地图</a></li>
+						</ul>
+					</div>
+					<div class = "top_right">
+						<a href="#"></a>
+						<p>周一至周日9:00-21:00 </p>
+					</div>
+				</div>
+				<p>武汉奇米网络科技有限公司 鄂ICP备10209250号 | ICP许可证号：鄂B1-20150109 | <a href="#">鄂公网安备42018502000390号</a> | 食品流通许可证 SP4201991510041888　　
+Copyright © 2010 -2017 JuanPi.com All Rights Reserved</p>
+			</div>
+		</div>
+		<div class = "aside">
+			<div class = "aside_top">
+				<div class = "normal aside_user"></div>
+				<div class = "normal aside_love"></div>
+				<div class = "normal aside_quan"></div>
+			</div>
+			<div class = "aside_bottom">
+				<div class = "normal aside_pen"></div>
+				<div class = "normal aside_code"></div>
+			</div>
+		</div>
+	</body>
+</html>
